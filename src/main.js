@@ -106,6 +106,6 @@ function update() {
     requestAnimationFrame(update);
 }
 
-await init();
+init();
 update();
 
