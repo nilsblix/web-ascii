@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ascii-webcam</title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+
+        @font-face {
+            font-family: "Hack Regular";
+            font-style: normal;
+            font-weight: normal;
+            src: local("Hack Regular"), url("hack-webfont/Hack-Regular.woff") format("woff");
+        }
+
+        .display {
+            top: 0px;
+            left: 0px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-family: Hack, Arial;
+            color: #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="camera-video" width="800" height="200" class="display" style="display: none;" autoplay></video>
+    <canvas id="canvas" class="display" style="display: none;"></canvas>
+    <canvas id="ascii-canvas" class="display" style="display: none;"></canvas>
+    <span id="ascii-register" class="display"></span>
+    <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
