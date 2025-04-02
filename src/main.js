@@ -5,7 +5,7 @@ const c = canvas.getContext("2d");
 const ascii_canv = document.getElementById("ascii-canvas");
 const ascii_c = ascii_canv.getContext("2d");
 
-const ROWS = 50;
+const ROWS = 70;
 const WIDTH_TO_HEIGHT = 0.7;
 
 function cols(c) {
@@ -82,8 +82,7 @@ function update() {
             const x1 = i * DIMS.x;
             const y1 = j * DIMS.y;
 
-            ascii_c.fillStyle = `rgba(${data[0]}, ${data[1]}, ${data[2]}, ${data[3]})`;
-            ascii_c.fillRect(x1, y1, DIMS.x, DIMS.y);
+            const color = `rgba(${data[0]}, ${data[1]}, ${data[2]}, ${data[3]})`;
 
             const value = document.createElement("span");
             value.style = `
@@ -92,20 +91,21 @@ function update() {
                 top: ${y1}px;
                 width: ${DIMS.x}px;
                 height: ${DIMS.y}px;
+                color: ${color};
                 font-size: inherit;
                 display: flex;
                 justify-content: center;
                 align-items: center;
             `
-            const brightnessChar = 10 - Math.floor(brightness / 255 * 10);
-            const brightnessScale = " .:-=+*%@#".charAt(brightnessChar);
+            const ascii = " .:-=+*ö%@#";
+            const brightnessChar = Math.floor(brightness / 255 * ascii.length);
+            const brightnessScale = ascii.charAt(brightnessChar);
             value.innerHTML = brightnessScale;
             register.appendChild(value);
         }
     }
-    requestAnimationFrame(update);
 }
 
 init();
-update();
+setInterval(update, 1 / 30 * 1E-3);
 
